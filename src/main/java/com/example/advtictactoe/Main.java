@@ -3,13 +3,11 @@ package com.example.advtictactoe;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
-public class HelloApplication extends Application {
+public class Main extends Application {
     @Override
     public void start(Stage stage)
     {
