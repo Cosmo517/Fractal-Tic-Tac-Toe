@@ -1,6 +1,6 @@
 package com.example.advtictactoe;
 
-import javafx.geometry.Pos;
+
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
@@ -19,7 +19,6 @@ public class Game extends GridPane
 
         currentPiece = 'X';
 
-        mainPane.setAlignment(Pos.CENTER);
         mainPane.setHgap(10);
         mainPane.setVgap(10);
 
@@ -54,12 +53,15 @@ public class Game extends GridPane
             }
         }
 
+
+
+
         //mainPane.setStyle("-fx-border-color: red;");
         this.getChildren().add(mainPane);
     }
 
 
-    public void determineNextMove(int boxClickedX, int boxClickedY)
+    private void determineNextMove(int boxClickedX, int boxClickedY)
     {
         int bigBoardBoxToPlayX = boxClickedX % 3;
         int bigBoardBoxToPlayY = boxClickedY % 3;
@@ -112,7 +114,7 @@ public class Game extends GridPane
         }
     }
 
-    public void lockBigBoardBasedOnCompleted()
+    private void lockBigBoardBasedOnCompleted()
     {
         int xStart = 0;
         int yStart = 0;
@@ -139,7 +141,7 @@ public class Game extends GridPane
 
     //
 
-    public void checkForDraw(int x, int y)
+    private void checkForDraw(int x, int y)
     {
         int xBox = x/3+1;
         int yBox = y/3+1;
@@ -170,12 +172,12 @@ public class Game extends GridPane
 
 
 
-    public char placePiece()
+    private char placePiece()
     {
         return currentPiece;
     }
 
-    public void swapPiece()
+    private void swapPiece()
     {
         if (currentPiece == 'X')
             currentPiece = 'O';
@@ -183,7 +185,7 @@ public class Game extends GridPane
             currentPiece = 'X';
     }
 
-    public void printBigBoard()
+    private void printBigBoard()
     {
         for (int m = 0; m < 3; m++)
         {
@@ -195,7 +197,7 @@ public class Game extends GridPane
         }
     }
 
-    public void checkForWin()
+    private void checkForWin()
     {
         int marksVertical = 0;
         int marksHorizontal = 0;
@@ -245,7 +247,7 @@ public class Game extends GridPane
         }
     }
 
-    public void checkForSmallWin(int x, int y)
+    private void checkForSmallWin(int x, int y)
     {
         int xBox = x/3+1;
         int yBox = y/3+1;
@@ -319,5 +321,22 @@ public class Game extends GridPane
                 for (int n = xStart; n < xEnd; n++)
                     board[m][n].setDisable(true);
         }
+    }
+
+    public void resetGame()
+    {
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                bigBoard[i][j] = ' ';
+
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                board[i][j].setText(" ");
+                board[i][j].setDisable(false);
+            }
+        }
+        currentPiece = 'X';
     }
 }
